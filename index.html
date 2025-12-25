@@ -1,125 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-//test
+
 <head>
-    <link rel="icon" type="image/svg+xml" href="Asset/logo SVG.svg">
-
-    <title>SWUCEBU_GWACALCULATOR</title>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWU GPA Calculator</title>
 
+    <link rel="icon" type="image/svg+xml" href="Asset/logo SVG.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href= "style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Optional: FontAwesome for icons if needed, or I'll use text/svg -->
 </head>
 
 <body>
-    <div id = "title">
-        <p>Welcome to GWA Calculator</p>
-    </div>
-    
-    <div id = "hero">
 
-        <div class = "section-header">
-            <p>Input each grade</p>
-            <hr>
-            <button id = "toggleGrades">Hide</button>
+    <header class="app-header">
+        <div class="logo-container">
+            <!-- <img src="Asset/logo SVG.svg" alt="SWU Logo"> -->
+            <h1>SWU GPA Calculator</h1>
+        </div>
+        <p class="subtitle">Calculate your Semester Average & GPA with precision</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Tabs -->
+        <div class="mode-selector">
+            <button class="mode-btn active" onclick="switchMode('detailed')" id="btn-detailed">Detailed
+                Calculator</button>
+            <button class="mode-btn" onclick="switchMode('quick')" id="btn-quick">Quick Average</button>
         </div>
 
-        <div id = "gradesSection">
-            <table class = "grades-table">
-                <tbody>
-                    <tr>
-                        <td class = "period-label">P1</td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td id = "outP1" class = "result-cell">Result</td>
-                    </tr>
-                    <tr>
-                        <td class = "period-label">P2</td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td id = "outP2" class = "result-cell">Result</td>
-                    </tr>
-                    <tr>
-                        <td class = "period-label">P3</td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td class = "input-cell"><input></td>
-                        <td id = "outP3" class = "result-cell">Result</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Detailed Mode -->
+        <section id="detailed-mode" class="calculator-card active">
+            <div class="card-header">
+                <h2>Detailed Grade Entry</h2>
+                <p>Enter individual grades for each periodical. We'll compute the average for you.</p>
+            </div>
+
+            <div class="periods-container">
+                <!-- P1 -->
+                <div class="period-group" id="p1-group">
+                    <div class="period-header">
+                        <h3>Prelim (P1)</h3>
+                        <span class="period-avg" id="p1-avg-display">Avg: 0.00</span>
+                    </div>
+                    <div class="grades-list" id="p1-grades">
+                        <!-- Inputs will be injected here -->
+                    </div>
+                    <button class="add-grade-btn" onclick="addGradeInput('p1')">+ Add Grade</button>
+                </div>
+
+                <!-- P2 -->
+                <div class="period-group" id="p2-group">
+                    <div class="period-header">
+                        <h3>Midterm (P2)</h3>
+                        <span class="period-avg" id="p2-avg-display">Avg: 0.00</span>
+                    </div>
+                    <div class="grades-list" id="p2-grades">
+                        <!-- Inputs will be injected here -->
+                    </div>
+                    <button class="add-grade-btn" onclick="addGradeInput('p2')">+ Add Grade</button>
+                </div>
+
+                <!-- P3 -->
+                <div class="period-group" id="p3-group">
+                    <div class="period-header">
+                        <h3>Finals (P3)</h3>
+                        <span class="period-avg" id="p3-avg-display">Avg: 0.00</span>
+                    </div>
+                    <div class="grades-list" id="p3-grades">
+                        <!-- Inputs will be injected here -->
+                    </div>
+                    <button class="add-grade-btn" onclick="addGradeInput('p3')">+ Add Grade</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Mode -->
+        <section id="quick-mode" class="calculator-card hidden">
+            <div class="card-header">
+                <h2>Quick Average Entry</h2>
+                <p>Already have your periodical averages? Enter them below.</p>
+            </div>
+
+            <div class="quick-inputs">
+                <div class="input-group">
+                    <label for="quick-p1">Prelim Average (P1)</label>
+                    <input type="number" id="quick-p1" placeholder="0.00" min="0" max="100" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="quick-p2">Midterm Average (P2)</label>
+                    <input type="number" id="quick-p2" placeholder="0.00" min="0" max="100" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="quick-p3">Finals Average (P3)</label>
+                    <input type="number" id="quick-p3" placeholder="0.00" min="0" max="100" step="0.01">
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Footer (Sticky or bottom of card) -->
+        <div class="results-section">
+            <button class="calculate-btn" id="calc-btn" onclick="calculateFinalGPA()">Calculate GPA</button>
+
+            <div class="results-display hidden" id="results-display">
+                <div class="result-box">
+                    <span class="result-label">Semester Average</span>
+                    <span class="result-value" id="final-sem-avg">0.00</span>
+                </div>
+                <!-- Divider -->
+                <div class="result-divider"></div>
+                <div class="result-box highlight">
+                    <span class="result-label">GPA</span>
+                    <span class="result-value" id="final-gpa">0.00</span>
+                </div>
+            </div>
+            <p class="gpa-message" id="gpa-message"></p>
         </div>
 
-        <div class = "section-header">
-            <p>Input periodical average</p>
-            <hr>
-            <button id = "toggleAverage">Hide</button>
-        </div>
+    </main>
 
-        <div id = "averageSection">
-            <table class = "average-table">
-                <tbody>
-                    <tr>
-                        <td class = "period-label">P1</td>
-                        <td class = "input-cell">
-                            <input type = "number" min = "0" max = "100" placeholder = "0" step = "0.01" oninput = "if(this.value > 100) this.value = 100;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class = "period-label">P2</td>
-                        <td class = "input-cell">
-                            <input type = "number" min = "0" max = "100" placeholder = "0" step = "0.01" oninput = "if(this.value > 100) this.value = 100;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class = "period-label">P3</td>
-                        <td class = "input-cell">
-                            <input type = "number" min = "0" max = "100" placeholder = "0" step = "0.01" oninput = "if(this.value > 100) this.value = 100;">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <footer>
+        <p>Southwestern University PHINMA &copy; 2025</p>
+    </footer>
 
-        <div id = "outputSection">
-            <p id = "outputText">
-                Your GPA is <span id = "semAverage" class = "final-output">0.00</span> or <span id = "semPoints" class = "final-output">0.00</span>
-            </p>
-            <br>
-            <button id = "calculateBtn" onclick="calculate()">Calculate</button>
-        </div>
-    </div>
-
-    <script src = "script.js"></script>
+    <script src="script.js"></script>
 </body>
 
-<footer id = "footer">SWU Cebu</footer>
 </html>
