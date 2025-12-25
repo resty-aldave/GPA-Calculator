@@ -117,19 +117,27 @@ function calculateFinalGPA() {
 
   // 3. Compute GPA
   let gpa;
-  // Logic from user's python script:
-  // if Sem_Average < 50: GPA = 4.00
-  // else: GPA = -0.04 * Sem_Average + 5
-
-  if (semAvg < 50) {
-    gpa = 4.00; // Failing grade based on user logic (usually 5.0 in PH but 4.0 here)
-    // Wait, did the user mean 4.0 scale? 
-    // 100 * -0.04 + 5 = 1.0.
-    // 50 * -0.04 + 5 = 3.0.
-    // So < 50 is worse than 3.0?
-    // If 4.0 is the fail grade, then it makes sense.
+  
+  if (semAvg >= 94.8) {
+    gpa = 1.00;
+  } else if (semAvg >= 89.2) {
+    gpa = 1.25;
+  } else if (semAvg >= 83.6) {
+    gpa = 1.50;
+  } else if (semAvg >= 78.0) {
+    gpa = 1.75;
+  } else if (semAvg >= 72.4) {
+    gpa = 2.00;
+  } else if (semAvg >= 66.8) {
+    gpa = 2.25;
+  } else if (semAvg >= 61.2) {
+    gpa = 2.50;
+  } else if (semAvg >= 55.6) {
+    gpa = 2.75;
+  } else if (semAvg >= 50.0) {
+    gpa = 3.00;
   } else {
-    gpa = (-0.04 * semAvg) + 5;
+    gpa = 4.00;
   }
 
   // 4. Display Results

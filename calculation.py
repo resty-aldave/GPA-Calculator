@@ -14,10 +14,26 @@ while True:
 
         Sem_Average = (P1_Average + P2_Average + P3_Average) / 3
 
-        if Sem_Average < 50:
+        if Sem_Average >= 94.8:
+            GPA = 1.00
+        elif Sem_Average >= 89.2:
+            GPA = 1.25
+        elif Sem_Average >= 83.6:
+            GPA = 1.50
+        elif Sem_Average >= 78.0:
+            GPA = 1.75
+        elif Sem_Average >= 72.4:
+            GPA = 2.00
+        elif Sem_Average >= 66.8:
+            GPA = 2.25
+        elif Sem_Average >= 61.2:
+            GPA = 2.50
+        elif Sem_Average >= 55.6:
+            GPA = 2.75
+        elif Sem_Average >= 50.0:
+            GPA = 3.00
+        else:
             GPA = 4.00
-        else: 
-            GPA = -0.04*(Sem_Average)+5
 
         print(f"\nYour semester average is {Sem_Average:.2f} or {GPA:.2f}\n")
         break
@@ -38,10 +54,26 @@ while True:
 
         Sem_Average = (P1_Average + P2_Average + P3_Average) / 3
 
-        if Sem_Average < 50:
+        if Sem_Average >= 94.8:
+            GPA = 1.00
+        elif Sem_Average >= 89.2:
+            GPA = 1.25
+        elif Sem_Average >= 83.6:
+            GPA = 1.50
+        elif Sem_Average >= 78.0:
+            GPA = 1.75
+        elif Sem_Average >= 72.4:
+            GPA = 2.00
+        elif Sem_Average >= 66.8:
+            GPA = 2.25
+        elif Sem_Average >= 61.2:
+            GPA = 2.50
+        elif Sem_Average >= 55.6:
+            GPA = 2.75
+        elif Sem_Average >= 50.0:
+            GPA = 3.00
+        else:
             GPA = 4.00
-        else: 
-            GPA = -0.04*(Sem_Average)+5
 
         print(f"\nP1 Average: {P1_Average:.2f}")
         print(f"P2 Average: {P2_Average:.2f}")
