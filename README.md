@@ -1,9 +1,5 @@
 # SWU GPA Calculator 🎓
 
-> *"Excellence begins with knowing where you stand."*
-
-The **SWU GPA Calculator** is a tailored web application designed for students of **Southwestern University PHINMA**. It provides a seamless, accurate, and aesthetically pleasing way to track your academic performance, ensuring you stay on top of your goals.
-
 ## ✨ Features
 
 - **Dual Modes for Flexibility**:
@@ -15,10 +11,6 @@ The **SWU GPA Calculator** is a tailored web application designed for students o
     - **Automatic Validation**: Ensures all inputs are valid grades (0-100), preventing accidental errors.
     - **SWU Grading System**: Automatically converts your Semester Average into the standard GPA point scale (e.g., 95 → 1.20).
 
-- **Premium Design**:
-    - Built with the official **SWU Maroon & White** identity.
-    - Fully **responsive** interface that looks great on laptops, tablets, and mobile phones.
-
 ## 🚀 How to Use
 
 1.  **Choose Your Mode**:
@@ -27,6 +19,3 @@ The **SWU GPA Calculator** is a tailored web application designed for students o
     - Type in your scores. In Detailed Mode, you can add as many grade entries as needed for each period.
 3.  **Get Your Result**:
     - Click **Calculate GPA** to reveal your Semester Average and final GPA rating.
-
----
-*Created with ❤️ for the Cobras.*
