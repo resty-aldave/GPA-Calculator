@@ -381,3 +381,95 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+/* Semester Block */
+.semester-block {
+    background-color: #fcfcfc;
+    border: 1px solid #eee;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.semester-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px dashed #eee;
+}
+
+.semester-header h3 {
+    margin: 0;
+    color: var(--swu-maroon);
+    font-size: 1.2rem;
+}
+
+.remove-sem-btn {
+    background: transparent;
+    border: none;
+    color: #ff4d4d;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.remove-sem-btn:hover {
+    color: #cc0000;
+}
+
+.add-semester-btn {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: 2px dashed var(--swu-gray);
+    color: #666;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+}
+
+.add-semester-btn:hover {
+    border-color: var(--swu-maroon);
+    color: var(--swu-maroon);
+    background-color: #fffafa;
+}
+
+/* Results Updates */
+#semesters-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.sem-result-item {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    min-width: 120px;
+}
+
+.sem-result-item h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.sem-result-item .sem-gpa {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}

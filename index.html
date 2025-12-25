@@ -40,46 +40,57 @@
         <section id="detailed-mode" class="calculator-card active">
             <div class="card-header">
                 <h2>Detailed Grade Entry</h2>
-                <p>Enter individual grades for each periodical. We'll compute the average for you.</p>
+                <p>Enter individual grades for each periodical. We'll compute the averages for you.</p>
             </div>
 
-            <div class="periods-container">
-                <!-- P1 -->
-                <div class="period-group" id="p1-group">
-                    <div class="period-header">
-                        <h3>Prelim (P1)</h3>
-                        <span class="period-avg" id="p1-avg-display">Avg: 0.00</span>
+            <div id="semesters-container">
+                <!-- Semester 1 (Default) -->
+                <div class="semester-block" id="sem-1">
+                    <div class="semester-header">
+                        <h3>Semester 1</h3>
+                        <button class="remove-sem-btn hidden" onclick="removeSemester(1)">&times;</button>
                     </div>
-                    <div class="grades-list" id="p1-grades">
-                        <!-- Inputs will be injected here -->
-                    </div>
-                    <button class="add-grade-btn" onclick="addGradeInput('p1')">+ Add Grade</button>
-                </div>
+                    <div class="periods-container">
+                        <!-- P1 -->
+                        <div class="period-group" id="sem1-p1-group">
+                            <div class="period-header">
+                                <h4>Prelim (P1)</h4>
+                                <span class="period-avg" id="sem1-p1-avg-display">Avg: 0.00</span>
+                            </div>
+                            <div class="grades-list" id="sem1-p1-grades">
+                                <!-- Inputs will be injected here -->
+                            </div>
+                            <button class="add-grade-btn" onclick="addGradeInput(1, 'p1')">+ Add Grade</button>
+                        </div>
 
-                <!-- P2 -->
-                <div class="period-group" id="p2-group">
-                    <div class="period-header">
-                        <h3>Midterm (P2)</h3>
-                        <span class="period-avg" id="p2-avg-display">Avg: 0.00</span>
-                    </div>
-                    <div class="grades-list" id="p2-grades">
-                        <!-- Inputs will be injected here -->
-                    </div>
-                    <button class="add-grade-btn" onclick="addGradeInput('p2')">+ Add Grade</button>
-                </div>
+                        <!-- P2 -->
+                        <div class="period-group" id="sem1-p2-group">
+                            <div class="period-header">
+                                <h4>Midterm (P2)</h4>
+                                <span class="period-avg" id="sem1-p2-avg-display">Avg: 0.00</span>
+                            </div>
+                            <div class="grades-list" id="sem1-p2-grades">
+                                <!-- Inputs will be injected here -->
+                            </div>
+                            <button class="add-grade-btn" onclick="addGradeInput(1, 'p2')">+ Add Grade</button>
+                        </div>
 
-                <!-- P3 -->
-                <div class="period-group" id="p3-group">
-                    <div class="period-header">
-                        <h3>Finals (P3)</h3>
-                        <span class="period-avg" id="p3-avg-display">Avg: 0.00</span>
+                        <!-- P3 -->
+                        <div class="period-group" id="sem1-p3-group">
+                            <div class="period-header">
+                                <h4>Finals (P3)</h4>
+                                <span class="period-avg" id="sem1-p3-avg-display">Avg: 0.00</span>
+                            </div>
+                            <div class="grades-list" id="sem1-p3-grades">
+                                <!-- Inputs will be injected here -->
+                            </div>
+                            <button class="add-grade-btn" onclick="addGradeInput(1, 'p3')">+ Add Grade</button>
+                        </div>
                     </div>
-                    <div class="grades-list" id="p3-grades">
-                        <!-- Inputs will be injected here -->
-                    </div>
-                    <button class="add-grade-btn" onclick="addGradeInput('p3')">+ Add Grade</button>
                 </div>
             </div>
+
+            <button class="add-semester-btn" onclick="addSemester()">+ Add Another Semester</button>
         </section>
 
         <!-- Quick Mode -->
@@ -89,20 +100,27 @@
                 <p>Already have your periodical averages? Enter them below.</p>
             </div>
 
-            <div class="quick-inputs">
-                <div class="input-group">
-                    <label for="quick-p1">Prelim Average (P1)</label>
-                    <input type="number" id="quick-p1" placeholder="0.00" min="0" max="100" step="0.01">
-                </div>
-                <div class="input-group">
-                    <label for="quick-p2">Midterm Average (P2)</label>
-                    <input type="number" id="quick-p2" placeholder="0.00" min="0" max="100" step="0.01">
-                </div>
-                <div class="input-group">
-                    <label for="quick-p3">Finals Average (P3)</label>
-                    <input type="number" id="quick-p3" placeholder="0.00" min="0" max="100" step="0.01">
+            <div id="quick-semesters-container">
+                <!-- Semester 1 (Default) -->
+                <div class="semester-block" id="quick-sem-1">
+                    <h3>Semester 1</h3>
+                    <div class="quick-inputs">
+                        <div class="input-group">
+                            <label for="quick-sem1-p1">Prelim Average (P1)</label>
+                            <input type="number" id="quick-sem1-p1" placeholder="0.00" min="0" max="100" step="0.01">
+                        </div>
+                        <div class="input-group">
+                            <label for="quick-sem1-p2">Midterm Average (P2)</label>
+                            <input type="number" id="quick-sem1-p2" placeholder="0.00" min="0" max="100" step="0.01">
+                        </div>
+                        <div class="input-group">
+                            <label for="quick-sem1-p3">Finals Average (P3)</label>
+                            <input type="number" id="quick-sem1-p3" placeholder="0.00" min="0" max="100" step="0.01">
+                        </div>
+                    </div>
                 </div>
             </div>
+            <button class="add-semester-btn" onclick="addQuickSemester()">+ Add Another Semester</button>
         </section>
 
         <!-- Results Footer (Sticky or bottom of card) -->
@@ -110,15 +128,16 @@
             <button class="calculate-btn" id="calc-btn" onclick="calculateFinalGPA()">Calculate GPA</button>
 
             <div class="results-display hidden" id="results-display">
-                <div class="result-box">
-                    <span class="result-label">Semester Average</span>
-                    <span class="result-value" id="final-sem-avg">0.00</span>
+                <div id="semesters-results">
+                    <!-- Individual Semester Results will go here -->
                 </div>
+
                 <!-- Divider -->
                 <div class="result-divider"></div>
+
                 <div class="result-box highlight">
-                    <span class="result-label">GPA</span>
-                    <span class="result-value" id="final-gpa">0.00</span>
+                    <span class="result-label">Cumulative GPA (CGPA)</span>
+                    <span class="result-value" id="final-cgpa">0.00</span>
                 </div>
             </div>
             <p class="gpa-message" id="gpa-message"></p>
