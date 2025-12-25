@@ -28,12 +28,5 @@ The **SWU GPA Calculator** is a tailored web application designed for students o
 3.  **Get Your Result**:
     - Click **Calculate GPA** to reveal your Semester Average and final GPA rating.
 
-## 🛠️ Technology
-
-Built with simplicity and performance in mind:
-- **HTML5** for semantic structure.
-- **CSS3** for modern, responsive styling.
-- **Vanilla JavaScript** for fast, dependency-free logic.
-
 ---
 *Created with ❤️ for the Cobras.*
