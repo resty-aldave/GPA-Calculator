@@ -57,7 +57,7 @@ function addGradeInput(semId, period) {
   const input = document.createElement('input');
   input.type = 'number';
   input.className = 'grade-input';
-  input.placeholder = '0.00';
+  input.placeholder = '0-100';
   input.min = '0';
   input.max = '100';
   input.step = '0.01';
@@ -208,15 +208,15 @@ function addQuickSemester() {
         <div class="quick-inputs">
             <div class="input-group">
                 <label for="quick-sem${newId}-p1">Prelim Average (P1)</label>
-                <input type="number" id="quick-sem${newId}-p1" placeholder="0.00" min="0" max="100" step="0.01">
+                <input type="number" id="quick-sem${newId}-p1" placeholder="Grade or GPA" min="0" max="100" step="0.01">
             </div>
             <div class="input-group">
                 <label for="quick-sem${newId}-p2">Midterm Average (P2)</label>
-                <input type="number" id="quick-sem${newId}-p2" placeholder="0.00" min="0" max="100" step="0.01">
+                <input type="number" id="quick-sem${newId}-p2" placeholder="Grade or GPA" min="0" max="100" step="0.01">
             </div>
             <div class="input-group">
                 <label for="quick-sem${newId}-p3">Finals Average (P3)</label>
-                <input type="number" id="quick-sem${newId}-p3" placeholder="0.00" min="0" max="100" step="0.01">
+                <input type="number" id="quick-sem${newId}-p3" placeholder="Grade or GPA" min="0" max="100" step="0.01">
             </div>
         </div>
     `;
@@ -249,14 +249,21 @@ function setupQuickInputsValidation(semId) {
     const id = `quick-sem${semId}-${p}`;
     const input = document.getElementById(id);
     if (input) {
-      input.addEventListener('input', () => validateInput(input));
+      input.addEventListener('input', () => validateQuickInput(input));
     }
   });
 }
 
+function validateQuickInput(input) {
+  if (input.value > 100) input.value = 100;
+  if (input.value < 0) input.value = 0;
+}
+
 
 // Calculate GPA from scale
-function getGpaFromAverage(av) {
+
+// Convert 0-100 Grade to GPA Scale (Detailed Mode)
+function convertGradeToGPA(av) {
   if (av >= 94.8) return 1.00;
   if (av >= 89.2) return 1.25;
   if (av >= 83.6) return 1.50;
@@ -268,6 +275,7 @@ function getGpaFromAverage(av) {
   if (av >= 50.0) return 3.00;
   return 4.00;
 }
+
 
 // Main Calculate Function
 function calculateFinalGPA() {
@@ -284,22 +292,40 @@ function calculateFinalGPA() {
     const parts = block.id.split('-');
     const idNum = parts[parts.length - 1]; // Internal unique ID
 
-    // 1. Get Averages
-    const p1 = getPeriodAverage(idNum, 'p1');
-    const p2 = getPeriodAverage(idNum, 'p2');
-    const p3 = getPeriodAverage(idNum, 'p3');
-
-    // 2. Compute Sem Average
-    const semAvg = (p1 + p2 + p3) / 3;
-
     // 3. Compute GPA
-    const gpa = getGpaFromAverage(semAvg);
+    let gpa;
+    let semAvg;
+
+    if (currentMode === 'detailed') {
+      const p1 = getPeriodAverage(idNum, 'p1');
+      const p2 = getPeriodAverage(idNum, 'p2');
+      const p3 = getPeriodAverage(idNum, 'p3');
+
+      semAvg = (p1 + p2 + p3) / 3;
+      gpa = convertGradeToGPA(semAvg); // Snap to standard GPA scale
+    } else {
+      // Quick Mode: Hybrid Logic
+      // 1. Get average of inputs
+      const p1 = getPeriodAverage(idNum, 'p1');
+      const p2 = getPeriodAverage(idNum, 'p2');
+      const p3 = getPeriodAverage(idNum, 'p3');
+
+      semAvg = (p1 + p2 + p3) / 3;
+
+      // 2. Hybrid Check
+      // If average > 5.0, assume it's a Raw Grade (0-100) -> Convert to GPA
+      // If average <= 5.0, assume it's already a GPA -> Use as is
+      if (semAvg > 5.0) {
+        gpa = convertGradeToGPA(semAvg);
+      } else {
+        gpa = semAvg;
+      }
+    }
 
     totalGPA += gpa;
     semCount++;
 
     // Append to results HTML
-    // Use the index + 1 for consistent labeling in results too
     const title = `Semester ${index + 1}`;
 
     semesterResultsHTML += `
@@ -310,6 +336,7 @@ function calculateFinalGPA() {
             </div>
         `;
   });
+
 
   // 4. Compute Cumulative GPA
   const cgpa = semCount > 0 ? totalGPA / semCount : 0;
