@@ -20,6 +20,6 @@
 3.  **Get Your Result**:
     - Click **Calculate GPA** to reveal your Semester Average and final GPA rating.
 
-## Visit Website Below:
+## Visit Website Below
 
-        [GPA Calculator](https://swu-bsit-gpa-calc-phi.vercel.app/)
+[🔗 GPA Calculator](https://swu-bsit-gpa-calc-phi.vercel.app/)
