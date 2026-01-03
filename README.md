@@ -22,4 +22,4 @@
 
 ## Visit Website Below:
 
-[GPA Calculator](https://swu-bsit-gpa-calc-phi.vercel.app/)
+        [GPA Calculator](https://swu-bsit-gpa-calc-phi.vercel.app/)
